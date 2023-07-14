@@ -1,18 +1,18 @@
-package com.itvillage.section02.class02;
+package com.itvillage.section02.class03;
 
 import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
 
 /**
- * takeLast 기본 예제
- *  - emit 된 데이터 중에서 파라미터로 입력된 갯수만큼 가장 마지막에 emit 된 데이터만 emit 한다.
+ * next 기본 예제
+ *  - emit 된 데이터 중에서 첫번째 데이터만 Downstream 으로 emit 한다.
  */
-public class TakeLastExample {
+public class NextExample {
     public static void main(String[] args) {
         Flux
             .fromIterable(SampleData.btcTopPricesPerYear)
-            .takeLast(2)
+            .next()
             .subscribe(tuple -> Logger.onNext(tuple.getT1(), tuple.getT2()));
     }
 }
