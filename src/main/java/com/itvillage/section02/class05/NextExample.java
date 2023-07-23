@@ -1,4 +1,4 @@
-package com.itvillage.section02.class03;
+package com.itvillage.section02.class05;
 
 import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
@@ -12,6 +12,8 @@ public class NextExample {
     public static void main(String[] args) {
         Flux
             .fromIterable(SampleData.btcTopPricesPerYear)
+//            .doOnNext(Logger::doOnNext)
+            .filter(tuple -> tuple.getT1() == 2015)
             .next()
             .subscribe(tuple -> Logger.onNext(tuple.getT1(), tuple.getT2()));
     }

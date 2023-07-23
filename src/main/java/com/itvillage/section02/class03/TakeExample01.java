@@ -1,4 +1,4 @@
-package com.itvillage.section02.class04;
+package com.itvillage.section02.class03;
 
 import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
@@ -18,6 +18,6 @@ public class TakeExample01 {
             .take(3)
             .subscribe(Logger::onNext);
 
-        TimeUtils.sleep(4000L);
+        TimeUtils.sleep(5000L);
     }
 }
