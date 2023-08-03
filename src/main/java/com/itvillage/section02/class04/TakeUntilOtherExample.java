@@ -14,14 +14,14 @@ import java.time.Duration;
  */
 public class TakeUntilOtherExample {
     public static void main(String[] args) {
-        Flux.interval(Duration.ofMillis(500))
+        Flux.interval(Duration.ofMillis(300))
                 .takeUntilOther(doSomeTask())
                 .subscribe(Logger::onNext);
 
-        TimeUtils.sleep(4000);
+        TimeUtils.sleep(2000);
     }
 
     private static Publisher<?> doSomeTask() {
-        return Mono.empty().delay(Duration.ofSeconds(2));
+        return Mono.empty().delay(Duration.ofSeconds(1));
     }
 }
