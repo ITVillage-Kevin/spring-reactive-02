@@ -7,7 +7,6 @@ import reactor.core.publisher.Flux;
 /**
  * takeWhile 기본 예제
  *  - 파라미터로 입력되는 Predicate이 true인 동안 emit 된 데이터만 Downstream에 emit 한다.
- *  - emit 된 데이터에는 Predicate이 true로 matching 되는 데이터는 포함되지 않는다.
  */
 public class TakeWhileExample {
     public static void main(String[] args) {
