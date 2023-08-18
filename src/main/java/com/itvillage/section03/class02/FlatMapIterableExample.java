@@ -8,17 +8,15 @@ import reactor.util.function.Tuple2;
 import java.util.List;
 
 /**
- * Concat 활용 예제
- *  - 유형별 코로나 백신 list 를 concat 하는 예제
+ * flatMapIterable 기본 개념 예제
+ *  - Iterable로 emit 된 데이터를 순차적으로 평탄화 한다.
+ *  - 유형별 코로나 백신 list 를 평탄화 하는 예제
  */
-public class ConcatExample03 {
+public class FlatMapIterableExample {
     public static void main(String[] args) {
-        Flux
-            .concat(
-                Flux.fromIterable(getViralVectorVaccines()),
-                Flux.fromIterable(getmRNAVaccines()),
-                Flux.fromIterable(getSubunitVaccines()))
-            .subscribe(Logger::onNext);
+        Flux.just(getViralVectorVaccines(), getmRNAVaccines(), getSubunitVaccines())
+                .flatMapIterable(vaccines -> vaccines)
+                .subscribe(Logger::onNext);
     }
 
     private static List<Tuple2<SampleData.CoronaVaccine, Integer>> getViralVectorVaccines() {

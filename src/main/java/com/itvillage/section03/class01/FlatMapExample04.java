@@ -9,12 +9,15 @@ import reactor.util.function.Tuples;
 /**
  * flatMap 활용 예제
  *  - 특정 가격에 BTC를 구매했을 때 연도별 최고가일 경우 수익 금액 계산하기.
- *      수익 금액 = (현재 가격 * 투자 금액 / 구매시 가격 ) - 원금
+ *      수익 금액 = (BTC 최고 가격  * 투자 금액 / 구매 당시 가격 ) - 원금
  */
 public class FlatMapExample04 {
+    private static final int BUY_PRICE = 500;
+    private static final int INVESTMENT_AMOUNT = 1000;
+
     public static void main(String[] args) {
         Flux
-                .just(Tuples.of(500, 1000))
+                .just(Tuples.of(BUY_PRICE, INVESTMENT_AMOUNT))
                 .flatMap(buyInfo -> calculateMaxProfitPerYear(buyInfo))
                 .subscribe(Logger::onNext);
     }

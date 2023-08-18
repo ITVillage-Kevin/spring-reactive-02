@@ -1,4 +1,4 @@
-package com.itvillage.section03.class01;
+package com.itvillage.section03.class02;
 
 import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
