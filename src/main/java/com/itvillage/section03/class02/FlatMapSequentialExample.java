@@ -6,8 +6,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * flatMap 기본 개념 예제
- *  - 평탄화 과정을 거치면서 emit 되는 순서를 보장한다.
+ * flatMapSequential 기본 개념 예제
+ *  - 비동기적으로 동작할 경우에도 emit 되는 순서를 보장한다.
  */
 public class FlatMapSequentialExample {
     public static void main(String[] args) {

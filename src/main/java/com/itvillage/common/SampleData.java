@@ -133,11 +133,11 @@ public class SampleData {
 
         public static List<CoronaVaccine> toList() {
             return Arrays.asList(
-                    CoronaVaccine.Pfizer,
-                    CoronaVaccine.AstraZeneca,
-                    CoronaVaccine.Moderna,
-                    CoronaVaccine.Janssen,
-                    CoronaVaccine.Novavax
+                    Pfizer,
+                    AstraZeneca,
+                    Moderna,
+                    Janssen,
+                    Novavax
             );
         }
     }

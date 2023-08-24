@@ -15,11 +15,13 @@ import reactor.util.function.Tuples;
  *      수익 금액 = (현재 가격 * 투자 금액 / 구매시 가격 ) - 원금
  */
 public class FlatMapManyExample {
+    private static final int BUY_PRICE = 500;
+    private static final int INVESTMENT_AMOUNT = 1000;
+
     public static void main(String[] args) {
         Mono
-                .just(Tuples.of(500, 1000))
+                .just(Tuples.of(BUY_PRICE, INVESTMENT_AMOUNT))
                 .flatMapMany(buyInfo -> calculateMaxProfitPerYear(buyInfo))
-
                 .subscribe(Logger::onNext);
 
         TimeUtils.sleep(200L);
