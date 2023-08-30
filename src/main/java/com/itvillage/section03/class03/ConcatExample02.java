@@ -4,6 +4,7 @@ import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * concat 기본 개념 예제
@@ -11,8 +12,10 @@ import java.util.Arrays;
  */
 public class ConcatExample02 {
     public static void main(String[] args) {
+        List<Flux<Integer>> sources = List.of(Flux.just(1, 2, 3), Flux.just(4, 5, 6));
+
         Flux
-            .concat(Arrays.asList(Flux.just(1, 2, 3), Flux.just(4, 5, 6)))
+            .concat(sources)
             .subscribe(Logger::onNext);
     }
 }
