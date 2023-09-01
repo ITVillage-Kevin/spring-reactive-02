@@ -1,25 +1,39 @@
 package com.itvillage.section03.class04;
 
+import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * merge 기본 개념 예제
- *  - 파라미터로 입력된 Publisher Sequence에서 emit된 데이터를 emit된 시간이 빠른 순서대로 merge한다.
- *  - merge operator를 정확하게 이해할 수 있는 예제
+ * merge 활용 예제
+ *  - merge를 이용하여 melt down 되고 있는 미 동부 원자력 발전소가 복구되는 메시지를 출력하는 예제
  */
 public class MergeExample02 {
     public static void main(String[] args) {
+        String[] usaStates = {
+                "Ohio", "Michigan", "New Jersey", "Illinois", "New Hampshire",
+                "Virginia", "Vermont", "North Carolina", "Ontario", "Georgia"
+        };
+
         Flux
-            .merge(
-                    Flux.just(1, 2, 3).delayElements(Duration.ofMillis(300L)),
-                    Flux.just(4, 5, 6).delayElements(Duration.ofMillis(500L))
-            )
+            .merge(getMeltDownRecoveryMessage(usaStates))
             .subscribe(Logger::onNext);
 
-        TimeUtils.sleep(1500L);
+        TimeUtils.sleep(2000L);
+    }
+
+    private static List<Mono<String>> getMeltDownRecoveryMessage(String[] usaStates) {
+        List<Mono<String>> messages = new ArrayList<>();
+
+        for (String state : usaStates) {
+            messages.add(SampleData.nppMap.get(state));
+        }
+
+        return messages;
     }
 }
