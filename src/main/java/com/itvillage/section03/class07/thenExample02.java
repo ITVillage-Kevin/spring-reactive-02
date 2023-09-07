@@ -1,4 +1,4 @@
-package com.itvillage.section03.class06;
+package com.itvillage.section03.class07;
 
 import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
@@ -21,13 +21,14 @@ public class thenExample02 {
                             "Application Server is restarted successfully")
             );
 
-        TimeUtils.sleep(6000L);
+        TimeUtils.sleep(3000L);
     }
 
-    private static Mono<String> restartApplicationServer() {
+    private static Mono<Void> restartApplicationServer() {
         return Mono
                 .just("Application Server was restarted successfully.")
                 .delayElement(Duration.ofSeconds(2))
-                .doOnNext(Logger::doOnNext);
+                .doOnNext(Logger::doOnNext)
+                .flatMap(notUse -> Mono.empty());
     }
 }

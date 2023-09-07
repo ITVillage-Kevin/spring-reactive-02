@@ -12,8 +12,7 @@ import java.time.Duration;
  */
 public class WhenExample02 {
     public static void main(String[] args) {
-        Mono.empty()
-            .when(restartApplicationServer(), restartDBServer(), restartStorageServer())
+        Mono.when(restartApplicationServer(), restartDBServer(), restartStorageServer())
             .subscribe(
                     Logger::onNext,
                     Logger::onError,
