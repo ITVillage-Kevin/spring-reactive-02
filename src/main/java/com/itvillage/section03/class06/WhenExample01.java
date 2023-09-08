@@ -15,9 +15,6 @@ import java.time.Duration;
 public class WhenExample01 {
     public static void main(String[] args) {
         Mono
-            .just("Okay")
-            .delayElement(Duration.ofSeconds(1))
-            .doOnNext(Logger::doOnNext)
             .when(
                 Flux
                     .just("Hi", "Tom")
