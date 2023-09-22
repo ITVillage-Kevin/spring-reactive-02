@@ -24,8 +24,24 @@ public class Logger {
         log.info("# doOnNext() {} {}: {}", taskName, operator, data);
     }
 
+    public static void doOnSubscribe() {
+        log.info("# doOnSubscribe()");
+    }
+
+    public static void doFirst() {
+        log.info("# doFirst()");
+    }
+
+    public static void doFinally(Object data) {
+        log.info("# doFinally(): {}", data);
+    }
+
     public static void doOnRequest(Object data) {
         log.info("# doOnRequest(): {}", data);
+    }
+
+    public static void doOnComplete() {
+        log.info("# doOnComplete()");
     }
 
     public static void onNext(Object data) {
