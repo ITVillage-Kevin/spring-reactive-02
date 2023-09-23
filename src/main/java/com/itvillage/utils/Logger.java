@@ -44,6 +44,14 @@ public class Logger {
         log.info("# doOnComplete()");
     }
 
+    public static void doOnTerminate(String operator) {
+        log.info("# doOnTerminate() {}", operator);
+    }
+    public static void doAfterTerminate(String operator) {
+        log.info("# doAfterTerminate() {}", operator);
+    }
+
+
     public static void onNext(Object data) {
         log.info("# onNext(): {}", data);
     }
