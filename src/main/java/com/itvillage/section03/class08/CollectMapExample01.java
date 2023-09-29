@@ -4,6 +4,10 @@ import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
 
+/**
+ * collectMap 활용 예제
+ *  - 모스 부호를 key로, 모스 부호에 해당되는 알파벳을 value로 하는 Map을 반환하는 예제
+ */
 public class CollectMapExample01 {
     public static void main(String[] args) {
         Flux

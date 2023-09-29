@@ -6,6 +6,10 @@ import reactor.core.publisher.Flux;
 
 import java.util.stream.Collectors;
 
+/**
+ * collectList 활용 예제
+ * - emit된 세 개의 모스 부호를 List<String> 타입으로 Downstream에 emit한다.
+ */
 public class CollectListExample01 {
     public static void main(String[] args) {
         Flux
