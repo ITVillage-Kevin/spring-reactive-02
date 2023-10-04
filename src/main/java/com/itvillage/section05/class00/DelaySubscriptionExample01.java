@@ -8,7 +8,7 @@ import java.time.Duration;
 
 /**
  * delaySubscription 기본 개념 예제
- *  - 구독을 파라미터로 입력한 시간만큼 지연 시킨다.
+ *  - 파라미터로 입력한 시간만큼 구독을 지연 시킨다.
  */
 public class DelaySubscriptionExample01 {
     public static void main(String[] args) {

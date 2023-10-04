@@ -6,6 +6,10 @@ import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 
+/**
+ * timeout 기본 개념 예제
+ *  - 파라미터로 입력한 시간 안에 Upstream에서 데이터가 emit 되지 않으면 TimeoutException을 발생시킨다.
+ */
 public class TimeoutExample01 {
     public static void main(String[] args) {
         requestToServer()
