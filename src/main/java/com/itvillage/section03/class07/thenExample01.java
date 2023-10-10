@@ -8,7 +8,7 @@ import java.time.Duration;
 
 /**
  * then 기본 개념 예제
- *  - Mono의 sequence가 종료할때 까지 대기한 후, Mono<Void>를 반환한다.
+ *  - Upstream Mono의 sequence가 종료되면, Mono<Void>를 Downstream으로 전달한다.
  */
 public class thenExample01 {
     public static void main(String[] args) {

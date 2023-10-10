@@ -10,7 +10,6 @@ import java.time.Duration;
 /**
  * when 기본 개념 예제
  *  - 파라미터로 입력된 Publisher들이 종료할 때 까지 대기한 후, Mono<Void>를 반환한다.
- *  - Mono 에서 emit 하는 데이터는 Downstream으로 전달 되지 않는다.
  */
 public class WhenExample01 {
     public static void main(String[] args) {
