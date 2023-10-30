@@ -16,7 +16,7 @@ public class CollectListExample01 {
             .just("...", "---", "...")
             .map(code -> transformMorseCode(code))
             .collectList()
-            .subscribe(list -> Logger.onNext(list.stream().collect(Collectors.joining())));
+            .subscribe(list -> Logger.onNext(String.join("", list)));
     }
 
     public static String transformMorseCode(String morseCode) {
