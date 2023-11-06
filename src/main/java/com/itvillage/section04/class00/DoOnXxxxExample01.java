@@ -14,7 +14,7 @@ public class DoOnXxxxExample01 {
             .range(1, 5)
             .doFinally(signalType -> Logger.doFinally(signalType))
             .doOnNext(data -> Logger.doOnNext("range", data))
-            .doOnRequest(data -> Logger.doOnRequest(data))
+            .doOnRequest(n -> Logger.doOnRequest(n))
             .doOnSubscribe(subscription -> Logger.doOnSubscribe())
             .doFirst(() -> Logger.doFirst())
             .filter(num -> num % 2 == 1)
