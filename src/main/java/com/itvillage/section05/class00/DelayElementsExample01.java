@@ -15,9 +15,8 @@ public class DelayElementsExample01 {
     public static void main(String[] args) {
         Flux
             .range(1, 10)
-            .doOnSubscribe(subscription -> Logger.doOnSubscribe())
-            .doOnNext(num -> Logger.doOnNext(num))
             .delayElements(Duration.ofMillis(500))
+            .doOnNext(num -> Logger.doOnNext(num))
             .subscribe(Logger::onNext);
 
         TimeUtils.sleep(6000);
