@@ -60,12 +60,16 @@ public class Logger {
         log.info("# onNext(): {} : {}", data1, data2);
     }
 
+    public static void onNext(String message, Object data1, Object data2) {
+        log.info("# onNext(): " + message, data1, data2);
+    }
+
     public static void onError(Throwable error) {
         log.error("error happened: ", error);
     }
 
     public static void onComplete() {
-        log.error("# onComplete()");
+        log.info("# onComplete()");
     }
 
     public static void onComplete(Object data) {
