@@ -124,6 +124,35 @@ public class SampleData {
     }
 
 
+    public static final List<Book> books =
+            Arrays.asList(
+                    new Book("Advance Java", "Tom",
+                            "Tom-boy", 25000, 100),
+                    new Book("Advance Python", "Grace",
+                            "Grace-girl", 22000, 150),
+                    new Book("Advance Reactor", "Smith",
+                            "David-boy", 35000, 200),
+                    new Book("Getting started Java", "Tom",
+                            "Tom-boy", 32000, 230),
+                    new Book("Advance Kotlin", "Kevin",
+                            "Kevin-boy", 32000, 250),
+                    new Book("Advance Javascript", "Mike",
+                            "Tom-boy", 32000, 320),
+                    new Book("Getting started Kotlin", "Kevin",
+                            "Kevin-boy", 32000, 150),
+                    new Book("Getting started Python", "Grace",
+                            "Grace-girl", 32000, 200),
+                    new Book("Getting started Reactor", "Smith",
+                            null, 32000, 250),
+                    new Book("Getting started Javascript", "Mike",
+                            "David-boy", 32000, 330)
+            );
+
+    public static final List<Integer> monthlyBookSales2021 =
+            Arrays.asList(2_500_000, 3_200_000, 2_300_000, 4_500_000,
+                    6_500_000, 5_500_000, 3_100_000, 2_000_000,
+                    2_800_000, 4_100_000, 6_200_000, 4_200_000);
+
     public enum CoronaVaccine {
         Pfizer,
         AstraZeneca,

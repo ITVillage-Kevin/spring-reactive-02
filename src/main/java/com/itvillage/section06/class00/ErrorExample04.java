@@ -1,27 +1,23 @@
-package com.itvillage.section06;
+package com.itvillage.section06.class00;
 
 import com.itvillage.common.Member;
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Mono;
 
 /**
- * then 활용 예제
- *  - 1 개의 task가 모두 끝났을 때, Complete Signal을 전달해서 추가 task를 수행하는 예제
+ * error Operator 활용 예제 코드
+ * - 입력으로 전달 받은 데이터의 유효성 검증에 실패할 경우 onError signal을 전송하는 예제
  */
-public class OnErrorResumeExample02 {
+public class ErrorExample04 {
+    private final static String EXIST_EMAIL = "kevin@gmail.com";
+    private final static String NOT_EXIST_EMAIL = "tom@gmail.com";
     public static void main(String[] args) {
-        String email = "kevin@gmail.com";
-//        String email = "tom@gmail.com";
-        verifyExistMember(email)
-                .onErrorResume(throwable -> {
-                    // 에러 처리 로직을 추가
-                    Logger.onError(throwable);
-                    return Mono.empty(); // 빈 Mono를 반환하여 이후 동작이 실행되지 않도록 함
-                })
+//        verifyExistMember(EXIST_EMAIL)
+        verifyExistMember(NOT_EXIST_EMAIL)
                 .flatMap(notUse -> saveMember(
                                         Member.builder()
                                                 .id(1L)
-                                                .email(email)
+                                                .email(NOT_EXIST_EMAIL)
                                                 .name("Kevin")
                                                 .build())
                 )
@@ -48,7 +44,7 @@ public class OnErrorResumeExample02 {
         Logger.info("# select from member where email=" + email);
         Mono existMember = Mono.just(Member.builder().id(1L).email("kevin@gmail.com").name("Kevin").build());
 
-        return email.equals("kevin@gmail.com") ? existMember : Mono.empty();
+        return email.equals(EXIST_EMAIL) ? existMember : Mono.empty();
     }
 
     private static Mono<Member> saveMember(Member member) {
