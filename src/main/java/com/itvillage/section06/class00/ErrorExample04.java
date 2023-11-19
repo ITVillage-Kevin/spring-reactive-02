@@ -11,9 +11,10 @@ import reactor.core.publisher.Mono;
 public class ErrorExample04 {
     private final static String EXIST_EMAIL = "kevin@gmail.com";
     private final static String NOT_EXIST_EMAIL = "tom@gmail.com";
+
     public static void main(String[] args) {
-//        verifyExistMember(EXIST_EMAIL)
-        verifyExistMember(NOT_EXIST_EMAIL)
+        verifyExistMember(EXIST_EMAIL)
+//        verifyExistMember(NOT_EXIST_EMAIL)
                 .flatMap(notUse -> saveMember(
                                         Member.builder()
                                                 .id(1L)
