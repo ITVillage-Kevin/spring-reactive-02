@@ -68,6 +68,10 @@ public class Logger {
         log.error("error happened: ", error);
     }
 
+    public static void onError(String message, Throwable error, Object data) {
+        log.error(message, error, data);
+    }
+
     public static void onComplete() {
         log.info("# onComplete()");
     }

@@ -16,7 +16,7 @@ public class OnErrorReturnExample01 {
         getBooks()
                 .map(book -> book.getPenName().toUpperCase())
                 .onErrorReturn("No pen name")
-                .subscribe(Logger::info);
+                .subscribe(Logger::info, Logger::onError);
     }
 
     public static Flux<Book> getBooks() {
