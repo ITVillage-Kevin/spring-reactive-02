@@ -1,57 +1,23 @@
-package com.itvillage.section03.class01;
+package com.itvillage.section06.class03;
 
-import com.itvillage.common.TimezoneNotFoundException;
+import com.itvillage.common.CannotDivideByZeroException;
 import com.itvillage.utils.Logger;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import org.springframework.http.*;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-import reactor.core.publisher.Mono;
-
-import java.net.URI;
-import java.util.Collections;
+import reactor.core.publisher.Flux;
 
 /**
- * onErrorMap 활용 예제
- *  - worldtimeapi.org Open API를 이용해서 서울의 현재 시간을 조회한다.
- *  - 404 Not Found가 발생할 경우, HttpClientErrorException을 조금 더 구체적인 TimezoneNotFoundException으로 변경한다.
+ * onErrorMap 기본 개념 예제
+ *  - Upstream에서 error signal이 전송되면 에러 정보(예외)를 전달 받아 또 다른 타입의 예외로 변환해서 Downstream으로 전송한다.
  */
 public class OnErrorMapExample01 {
-    private final static URI WORLD_TIME_URI = UriComponentsBuilder.newInstance().scheme("http")
-            .host("worldtimeapi.org")
-            .port(80)
-            .path("/api/timezone/Asia/Mars") // 잘못된 URI 입력
-            .build()
-            .encode()
-            .toUri();
-
     public static void main(String[] args) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-
-        Mono.fromSupplier(() ->
-                        restTemplate.exchange(WORLD_TIME_URI, HttpMethod.GET, new HttpEntity<String>(headers), String.class)
-                )
-                .onErrorMap(HttpClientErrorException.class, (HttpClientErrorException ex) -> {
-                    if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
-                        return new TimezoneNotFoundException(ex.getResponseBodyAsString());
-                    }
-                    return new HttpClientErrorException(ex.getStatusCode());
-                })
-                .map(response -> {
-                    DocumentContext jsonContext = JsonPath.parse(response.getBody());
-                    String dateTime = jsonContext.read("$.datetime");
-                    return dateTime;
-                })
+        Flux.just(1, 3, 0, 6, 8)
+                .filter(num -> num % 3 == 0) // 3으로 나누어 떨어지는 숫자만 필터링 하기 위한 작업. 0도 포함된다.
+                .doOnNext(Logger::doOnNext)
+                .map(num -> (num * 2) / num) // 0으로 나눌 수 없으므로 ArithmeticException이 발생한다.
+                .onErrorMap(error -> new CannotDivideByZeroException(error.getMessage()))
                 .subscribe(
-                        data -> Logger.info("# emitted data: " + data),
-                        error -> {
-                            Logger.onError(error);
-                        },
-                        () -> Logger.info("# emitted onComplete signal")
+                        Logger::onNext,
+                        Logger::onError
                 );
 
     }
