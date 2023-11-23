@@ -46,13 +46,8 @@ public class OnErrorMapExample02 {
                     String dateTime = jsonContext.read("$.datetime");
                     return dateTime;
                 })
-                .subscribe(
-                        data -> Logger.info("# emitted data: " + data),
-                        error -> {
-                            Logger.onError(error);
-                        },
-                        () -> Logger.info("# emitted onComplete signal")
-                );
-
+                .subscribe(Logger::onNext,
+                        Logger::onError,
+                        Logger::onComplete);
     }
 }
