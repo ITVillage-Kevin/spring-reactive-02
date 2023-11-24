@@ -126,17 +126,23 @@ public class SampleData {
 
     public static final List<Book> books =
             Arrays.asList(
-                    new Book("Advance Java", "Tom", "Tom-boy", 25000, 100),
-                    new Book("Advance Python", "Grace", "Grace-girl", 22000, 150),
-                    new Book("Advance Reactor", "Smith", "David-boy", 35000, 200),
-                    new Book("Getting started Java", "Tom", "Tom-boy", 32000, 230),
-                    new Book("Advance Kotlin", "Kevin", "Kevin-boy", 32000, 250),
-                    new Book("Advance Javascript", "Mike", "Tom-boy", 32000, 320),
-                    new Book("Getting started Kotlin", "Kevin", "Kevin-boy", 32000, 150),
-                    new Book("Getting started Python", "Grace", "Grace-girl", 32000, 200),
-                    new Book("Getting started Reactor", "Smith", null, 32000, 250),
-                    new Book("Getting started Javascript", "Mike", "David-boy", 32000, 330)
+                    new Book(1, "Advance Java", "Tom", "Tom-boy", 25000, 100),
+                    new Book(2, "Advance Python", "Grace", "Grace-girl", 22000, 150),
+                    new Book(3, "Advance Reactor", "Smith", "David-boy", 35000, 200),
+                    new Book(4, "Getting started Java", "Tom", "Tom-boy", 32000, 230),
+                    new Book(5, "Advance Kotlin", "Kevin", "Kevin-boy", 32000, 250),
+                    new Book(6, "Advance Javascript", "Mike", "Tom-boy", 32000, 320),
+                    new Book(7, "Getting started Kotlin", "Kevin", "Kevin-boy", 32000, 150),
+                    new Book(8, "Getting started Python", "Grace", "Grace-girl", 32000, 200),
+                    new Book(9, "Getting started Reactor", "Smith", null, 32000, 250),
+                    new Book(10, "Getting started Javascript", "Mike", "David-boy", 32000, 330)
             );
+
+    public static Book findBookById(int bookId) {
+        return books.stream()
+                .filter(book -> book.getBookId() == bookId)
+                .findFirst().orElseThrow(() -> new RuntimeException("Not found book"));
+    }
 
     public static final List<Integer> monthlyBookSales2021 =
             Arrays.asList(2_500_000, 3_200_000, 2_300_000, 4_500_000,

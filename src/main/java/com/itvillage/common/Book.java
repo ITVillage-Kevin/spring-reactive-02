@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Book {
+    private int bookId;
     private String bookName;
     private String authorName;
     private String penName;

@@ -31,7 +31,7 @@ public class OnErrorResumeExample01 {
 
     private static Flux<Book> getBooksFromDatabase(final String keyword) {
         List<Book> books = new ArrayList<>(SampleData.books);
-        books.add(new Book("DDD: Domain Driven Design",
+        books.add(new Book(11, "DDD: Domain Driven Design",
                 "Joy", "ddd-man", 35000, 200));
         return Flux
                 .fromIterable(books)

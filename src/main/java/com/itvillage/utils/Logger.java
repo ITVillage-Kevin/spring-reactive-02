@@ -12,6 +12,10 @@ public class Logger {
         log.info(msg, data);
     }
 
+    public static void info(String msg, Object data1, Object data2) {
+        log.info(msg, data1, data2);
+    }
+
     public static void doOnNext(Object data) {
         log.info("# doOnNext(): {}", data);
     }
