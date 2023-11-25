@@ -43,8 +43,7 @@ public class RetryExample02 {
                     return book;
                 })
                 .timeout(Duration.ofSeconds(2))
-                .retry(1)
-                .doOnNext(book -> Logger.onNext("# getBooks > doOnNext: {}, price: {}",
-                        book.getBookName(), book.getPrice()));
+                .doOnNext(book -> Logger.doOnNext(book.getBookName(), book.getPrice()))
+                .retry(1);
     }
 }

@@ -20,8 +20,8 @@ public class Logger {
         log.info("# doOnNext(): {}", data);
     }
 
-    public static void doOnNext(String operator, Object data) {
-        log.info("# doOnNext() {}: {}", operator, data);
+    public static void doOnNext(Object data1, Object data2) {
+        log.info("# doOnNext() {}: {}", data1, data2);
     }
 
     public static void doOnNext(String taskName, String operator, Object data) {
@@ -51,10 +51,10 @@ public class Logger {
     public static void doOnTerminate(String operator) {
         log.info("# doOnTerminate() {}", operator);
     }
+
     public static void doAfterTerminate(String operator) {
         log.info("# doAfterTerminate() {}", operator);
     }
-
 
     public static void onNext(Object data) {
         log.info("# onNext(): {}", data);

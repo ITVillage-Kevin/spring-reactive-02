@@ -1,6 +1,7 @@
 package com.itvillage.section06.class04;
 
 import com.itvillage.utils.Logger;
+import com.itvillage.utils.TimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
@@ -17,12 +18,10 @@ public class RetryExample01 {
             .range(1, 3)
             .delayElements(Duration.ofSeconds(1))
             .map(num -> {
-                try {
-                    if (num == 3 && count[0] == 1) {
-                        count[0]++;
-                        Thread.sleep(1000);
-                    }
-                } catch (InterruptedException e) {}
+                if (num == 3 && count[0] == 1) {
+                    count[0]++;
+                    TimeUtils.sleep(1000);
+                }
 
                 return num;
             })
@@ -32,6 +31,6 @@ public class RetryExample01 {
                     Logger::onError,
                     Logger::onComplete);
 
-        Thread.sleep(7000);
+        TimeUtils.sleep(7000);
     }
 }
