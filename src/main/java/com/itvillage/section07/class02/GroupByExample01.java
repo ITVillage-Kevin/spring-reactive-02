@@ -20,6 +20,6 @@ public class GroupByExample01 {
                             .collectList()
             )
             .subscribe(bookByAuthor ->
-                    Logger.onNext("# book by author: {}", bookByAuthor));
+                    Logger.onNext(bookByAuthor));
     }
 }

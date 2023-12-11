@@ -19,11 +19,9 @@ public class GroupByExample03 {
                         .just(groupedFlux.key())
                         .zipWith(
                                 groupedFlux
-                                        .map(book ->
-                                                (int)(book.getPrice() * book.getStockQuantity() * 0.1))
+                                        .map(book -> (int)(book.getPrice() * book.getStockQuantity() * 0.1))
                                         .reduce((y1, y2) -> y1 + y2),
-                                (authorName, sumRoyalty) ->
-                                        authorName + "'s royalty: " + sumRoyalty)
+                                (authorName, sumRoyalty) -> authorName + "'s royalty: " + sumRoyalty)
             )
             .subscribe(Logger::onNext);
     }
