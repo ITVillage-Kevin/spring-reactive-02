@@ -9,7 +9,7 @@ import java.sql.Time;
 import java.time.Duration;
 
 /**
- * publish() 기본 개념 예제
+ * publish() 활용 예제
  *  - 다수의 Subscriber와 Flux를 공유한다.
  *  - Cold Sequence를 Hot Sequence로 변환한다.
  *  - connect()가 호출 되기 전 까지는 데이터를 emit하지 않는다.
@@ -20,16 +20,19 @@ public class PublishExample02 {
     static {
         publisher =
                 Flux
-                        .just("Concert part1", "Concert part2", "Concert part3")
-                        .delayElements(Duration.ofMillis(300L))
-                        .publish();
+                    .just("Concert part1", "Concert part2", "Concert part3")
+                    .delayElements(Duration.ofMillis(300L))
+                    .publish();
     }
 
     public static void main(String[] args) {
         checkAudienceNumbers();
+
         TimeUtils.sleep(500L);
         publisher.subscribe(data -> Logger.info("# audience 1 is watching {}", data));
         checkedAudienceNumbers++;
+
+        checkAudienceNumbers();
 
         TimeUtils.sleep(500L);
         publisher.subscribe(data -> Logger.info("# audience 2 is watching {}", data));

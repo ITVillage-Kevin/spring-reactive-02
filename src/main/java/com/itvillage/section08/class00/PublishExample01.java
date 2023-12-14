@@ -17,9 +17,9 @@ public class PublishExample01 {
     public static void main(String[] args) {
         ConnectableFlux<Integer> flux =
                 Flux
-                        .range(1, 5)
-                        .delayElements(Duration.ofMillis(300L))
-                        .publish();
+                    .range(1, 5)
+                    .delayElements(Duration.ofMillis(300L))
+                    .publish();
 
         TimeUtils.sleep(500L);
         flux.subscribe(data -> Logger.onNext("subscriber1: ", data));
