@@ -12,7 +12,7 @@ import java.time.Duration;
  *  - 다수의 Subscriber와 Flux를 공유한다.
  *  - Cold Sequence를 Hot Sequence로 변환한다.
  *  - connect()가 호출 되기 전 까지는 데이터를 emit하지 않는다.
- *  - 마지막에 emit된 데이터까지 모두 캐시한다.
+ *  - 구독 시점 이 전에 emit된 데이터를 모두 캐시한다.
  */
 public class ReplayExample01 {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class ReplayExample01 {
                 Flux
                     .range(1, 5)
                     .delayElements(Duration.ofMillis(300L))
-                    .replay(2);
+                    .replay();
 
         TimeUtils.sleep(500L);
         flux.subscribe(data -> Logger.onNext("subscriber1: ", data));
