@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * 예제 코드에 사용하는 샘플 데이터
+ */
 public class SampleData {
     public static final List<String> coinNames = Arrays.asList("BTC", "ETH", "XRP", "ICX", "EOS", "BCH");
     public static final List<Integer> btcPrices =
